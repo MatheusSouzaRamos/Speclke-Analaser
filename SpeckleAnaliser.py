@@ -49,8 +49,6 @@ class SA:
         a1 = q // 2 + q // 3
         a2 = a1 // 2 + a1//4
         a3 = a2 // 2
-        
-        #p = (RED + GREEN + BLUE) / (q - 1)
 
         rr = RED / (q - 1)
         gg = GREEN / (q - 1)
@@ -94,7 +92,7 @@ class SA:
         cv.imwrite(name, graphic)
 
     def PictureForVideo(n):
-        global img, h, w, I, graphic, average, average_2, imgs
+        global c, img, h, w, I, graphic, average, average_2, imgs
 
         img = cv.imread(c + '/imagem1.png')
         h, w, _ = img.shape
@@ -125,31 +123,23 @@ class SA:
 
             n = average_2
             average_2 += average
-
-            print('n = {}'.format(n))
-            print('average_2 = {}'.format(average_2))
-
+    
             SA.colorPicture(255,127,63)
             imgs.append(graphic.copy())
-
-            print('Feito uma parte')
-
-    def video(caminho):
-        global c, average, imgs, q, el, average_2
+            
+    def video():
+        global c, average, imgs, q, el, average_2, video
         imgs = []
-        SA.set_folder(caminho)
 
-        
         average = int(sqrt(len(el)))
         average_2 = average
-        print(average)
         SA.PictureForVideo(average)
 
         name = 'videoSpeckle.avi'
         fps = 1
         height, width, layers = imgs[0].shape
 
-        fourcc = cv.VideoWriter_fourcc(*'XVID')  # Codec de vídeo
+        fourcc = cv.VideoWriter_fourcc(*'XVID')
         video = cv.VideoWriter(name, fourcc, fps, (width, height))
 
         for img in imgs:
@@ -157,11 +147,4 @@ class SA:
 
         video.release()
 
-    def SaveVideo(caminho):
-        global imgs
-
-
-
-
-
-SA.video('/home/suehtam/Documents/paint')
+#SA.video('/home/suehtam/Documents/paint')

@@ -59,15 +59,7 @@ def botaoteste():
     print('botao')
 
 def executar_video():
-    global salvar_pasta
-    salvar_pasta = filedialog.askdirectory(title="Selecione uma pasta")
-    SA.set_folder_save(salvar_pasta)
-
-    SA.Video()
-    SA.SaveVideo()
-
-    label_salvar2.config(text= "Concluído", fg = "green")
-    print('salvo em {}'.format(salvar_pasta))
+    SA.video()
 
 color1 = "#FFFFFF"
 
@@ -80,10 +72,8 @@ window.resizable(width=False, height=False)
 label1 = tk.Label(window, text="Speclke Analiser - Analisador de Atividade de Speclke")
 label1.place(x=7, y=15)
 
-
 label2 = tk.Label(window, text="Análise de Fotos:")
 label2.place(x=20, y=50)
-
 
 botao1 = tk.Button(window, text="Selecionar Pasta de Arquivos", command=selecionar_pasta)
 botao1.place(x=25, y=80)
@@ -146,7 +136,6 @@ botao4.place(x=25 , y= 320)
 label_salvar = tk.Label(window, text = "", bg = color1)
 label_salvar.place(x=100, y=325)
 
-
 # video
 
 label5 = tk.Label(window, text="Análise em Vídeo")
@@ -167,5 +156,4 @@ label_salvar2.place(x=120, y=480)
 # video
 
 window.mainloop()
-
 
